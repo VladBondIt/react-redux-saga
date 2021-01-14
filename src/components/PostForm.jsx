@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createPosts } from '../redux/actions/posts'
 
 class PostForm extends Component {
 
@@ -17,7 +19,8 @@ class PostForm extends Component {
                 id: Date.now().toString(16)
             }
 
-            console.log(newPost);
+            this.props.createPosts(newPost)
+
         } else {
             this.setState({ title: '' })
         }
@@ -54,4 +57,8 @@ class PostForm extends Component {
     }
 }
 
-export default PostForm;
+const mapDispatchToProps = {
+    createPosts
+}
+
+export default connect(null, mapDispatchToProps)(PostForm);

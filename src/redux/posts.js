@@ -1,11 +1,34 @@
 const initialState = {
-    posts: [],
+    syncPosts: [],
     fetchedPosts: [],
+    isLoaded: false
 }
 
 
-export const posts = (state = initialState, action) => {
+const posts = (state = initialState, action) => {
+    switch (action.type) {
+        case "CREATE_POSTS":
+            return {
+                ...state,
+                syncPosts: [
+                    ...state.syncPosts,
+                    action.payload
+                ]
+            }
+        case "SET_FETCHED_POSTS":
+            return {
+                ...state,
+                fetchedPosts: action.payload
+            }
+        case "SET_LOADER":
+            return {
+                ...state,
+                isLoaded: true
+            }
 
-
-    return state;
+        default:
+            return state;
+    }
 }
+
+export default posts;
