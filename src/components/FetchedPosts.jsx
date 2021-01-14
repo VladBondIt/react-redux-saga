@@ -14,19 +14,21 @@ function FetchedPosts() {
 
 
     const onFetchPosts = () => {
+
         dispatch(fetchPosts)
     }
 
     return (
-        fetchedPosts.length === 0
-            ? <button
-                onClick={onFetchPosts}
-                className="btn btn-primary"><h3>Loading Posts</h3></button>
-            : <ul>
-                {isLoaded === false
-                    ? <Loader />
-                    : fetchedPosts.map(item => <FetchedPost {...item} key={item.id} />)}
-            </ul>
+        isLoaded === false
+            ?
+            fetchedPosts.length > 0
+                ? <ul>
+                    {fetchedPosts.map(item => <FetchedPost {...item} key={item.id} />)}</ul>
+                : <button
+                    onClick={onFetchPosts}
+                    className="btn btn-primary"><h3>Loading Posts</h3></button>
+            : <Loader />
+
     )
 }
 

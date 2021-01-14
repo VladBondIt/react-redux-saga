@@ -18,7 +18,8 @@ const posts = (state = initialState, action) => {
         case "SET_FETCHED_POSTS":
             return {
                 ...state,
-                fetchedPosts: action.payload
+                fetchedPosts: action.payload,
+                isLoaded: false
             }
         case "SET_LOADER":
             return {

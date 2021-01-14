@@ -8,9 +8,8 @@ const setFetchedPosts = (dataPosts) => ({
 })
 
 export const fetchPosts = async dispatch => {
+    dispatch(loader());
     const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5")
     const data = await res.json()
-    console.log(data)
-    dispatch(loader());
     dispatch(setFetchedPosts(data));
 }
