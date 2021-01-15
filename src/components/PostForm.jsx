@@ -22,7 +22,6 @@ class PostForm extends Component {
             }
 
             createPosts(newPost)
-            setAlertForm(false)
         } else {
             this.setState({ title: '' })
             setAlertForm(true)
@@ -32,7 +31,7 @@ class PostForm extends Component {
 
         setTimeout(() => {
             setAlertForm(false)
-        }, 3000);
+        }, 6000);
 
     }
 
