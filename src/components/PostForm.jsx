@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createPosts } from '../redux/actions/posts'
+import { createPosts, setAlertForm } from '../redux/actions/posts'
+import AlertForm from './AlertForm';
 
 class PostForm extends Component {
 
@@ -12,6 +13,7 @@ class PostForm extends Component {
         e.preventDefault();
 
         const { title } = this.state;
+        const { createPosts, setAlertForm } = this.props
 
         if (title.trim() !== '') {
             const newPost = {
@@ -19,13 +21,18 @@ class PostForm extends Component {
                 id: Date.now().toString(16)
             }
 
-            this.props.createPosts(newPost)
-
+            createPosts(newPost)
+            setAlertForm(false)
         } else {
             this.setState({ title: '' })
+            setAlertForm(true)
         }
 
         this.setState({ title: '' })
+
+        setTimeout(() => {
+            setAlertForm(false)
+        }, 3000);
 
     }
 
@@ -41,6 +48,7 @@ class PostForm extends Component {
     render() {
         return (
             <form onSubmit={this.submitHandler}>
+                {this.props.alertForm && <AlertForm />}
                 <div className="mb-5">
                     <label htmlFor="title" className="form-label"><h3>Heading Post</h3></label>
                     <input
@@ -57,8 +65,15 @@ class PostForm extends Component {
     }
 }
 
-const mapDispatchToProps = {
-    createPosts
+const mapStateToProps = (state) => {
+    return {
+        alertForm: state.posts.alertForm
+    }
 }
 
-export default connect(null, mapDispatchToProps)(PostForm);
+const mapDispatchToProps = {
+    createPosts,
+    setAlertForm
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostForm);

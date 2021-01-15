@@ -1,7 +1,8 @@
 const initialState = {
     syncPosts: [],
     fetchedPosts: [],
-    isLoaded: false
+    isLoaded: false,
+    alertForm: false
 }
 
 
@@ -25,6 +26,11 @@ const posts = (state = initialState, action) => {
             return {
                 ...state,
                 isLoaded: true
+            }
+        case "SET_ALER_FORM":
+            return {
+                ...state,
+                alertForm: action.payload
             }
 
         default:

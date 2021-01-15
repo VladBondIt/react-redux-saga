@@ -3,7 +3,9 @@ import React from 'react'
 function Loader() {
     return (
         <div>
-            <h2>LOADING</h2>
+            <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
         </div>
     )
 }

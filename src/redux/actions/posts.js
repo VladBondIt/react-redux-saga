@@ -4,3 +4,8 @@ export const createPosts = (postObj) => ({
 })
 
 
+export const setAlertForm = (alertBoolean) => ({
+    type: "SET_ALER_FORM",
+    payload: alertBoolean
+})
+
