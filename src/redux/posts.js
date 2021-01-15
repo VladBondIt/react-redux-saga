@@ -25,9 +25,9 @@ const posts = (state = initialState, action) => {
         case "SET_LOADER":
             return {
                 ...state,
-                isLoaded: true
+                isLoaded: action.payload
             }
-        case "SET_ALER_FORM":
+        case "SET_ALERT_FORM":
             return {
                 ...state,
                 alertForm: action.payload

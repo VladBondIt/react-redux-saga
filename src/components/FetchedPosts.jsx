@@ -15,7 +15,7 @@ function FetchedPosts() {
 
     const onFetchPosts = () => {
 
-        dispatch(fetchPosts)
+        dispatch(fetchPosts())
     }
 
     return (
