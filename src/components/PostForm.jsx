@@ -31,7 +31,7 @@ class PostForm extends Component {
 
         setTimeout(() => {
             setAlertForm(false)
-        }, 6000);
+        }, 3000);
 
     }
 
